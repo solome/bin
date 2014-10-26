@@ -8,7 +8,9 @@ newbr=$branch
 if [[ $branch != *$author\/* ]]; then
 	newbr="$author/$branch"
 fi
-
 cmd='git push -u origin '$branch:$newbr
+if [[ "$1" = "master" ]]; then
+	cmd='git push origin master'
+fi
 echo $cmd
 $cmd

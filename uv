@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ "$1"=="" ]];
-then CMD="gcc -o app "$1" /usr/local/lib/libuv.a -framework CoreFoundation -framework CoreServices";
+if [[ "$1"="" ]]; then
+	CMD="gcc -o app "$1" /usr/local/lib/libuv.a -framework CoreFoundation -framework CoreServices";
     echo $CMD;
     $CMD;
 fi
