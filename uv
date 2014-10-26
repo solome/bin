@@ -1,7 +1,19 @@
 #!/bin/bash
+# $1 source file
+# $2 libray path
 
-if [[ "$1"="" ]]; then
-	CMD="gcc -o app "$1" /usr/local/lib/libuv.a -framework CoreFoundation -framework CoreServices";
-    echo $CMD;
-    $CMD;
+if [[ "$1" = "" ]]; then
+	echo 'Error: no source file'
+	exit
 fi
+
+if [[ "$2" = "" ]]; then
+	libPath=$HOME'/lib'
+else
+	libPath=$2
+fi
+
+CMD="gcc -o app "$1" "$libPath"/libuv.a -framework CoreFoundation -framework CoreServices"
+echo $CMD
+$CMD
+
