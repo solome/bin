@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# user
+author=$(git config user.name)
+# branch
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+newbr=$branch
+if [[ $branch != *$author\/* ]]; then
+	newbr="$author/$branch"
+fi
+
+cmd='git push -u origin '$branch:$newbr
+echo $cmd
+$cmd
